@@ -1,0 +1,39 @@
+<h1 align='center'>Welcome to my fourm!</h1>
+
+<tr><h2><%= link_to 'Register',users_register_path %></h2></tr>
+<tr><h2><%= link_to 'Login',login_log_path %></h2></tr>
+<% if session[:name] %>
+<tr>
+  <td><h4>Welcome, <%= session[:name] %> ! </td>
+  <td><%= link_to 'My Log information',login_myinfo_path %></td>
+  <td><%= link_to 'Quit', users_quit_path %></td>
+
+</tr>
+<tr>
+  <td><h2><%= link_to 'New Article',articles_new_path%></h2></td>
+  <td><h2><%= link_to 'Find Article',articles_find_path%></h2></td>
+</tr>	
+<% end %>
+<h2>All articles here!</h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>abstract</th>
+    <th>Author</th>
+    <th>Read_count</th>
+    <th>Comments</th>
+    <th>Details</th>
+  </tr>
+
+  <% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.abstract %></td> 
+    <td><%= link_to article.user_name , users_myinfo_path(user_name: article.user_name)%></td>   
+    <td><%= article.read_count %></td>
+    <td><%= article.comments_num %></td>
+    <td><%= link_to 'View',article_path(article)%></td>
+  </tr>
+  <% end %>
+</table>
+

@@ -1,0 +1,28 @@
+<h1>Please login!</h1>
+
+<%= form_for :user,url:login_path , method: :post do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+           Errors! Please try again!     </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

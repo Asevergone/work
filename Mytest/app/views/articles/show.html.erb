@@ -1,0 +1,32 @@
+<h1>Title : <%= @article.title %></h1>
+<h4>Author : <%= link_to @article.user_name , users_myinfo_path(user_name: @article.user_name) %>  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Read_count: <%=@article.read_count%> </h4>
+<br>
+<h3>Write at : <%=@article.created_at%></h3>
+<br>
+
+<h3><%= @article.body%></h3>
+
+<br>
+<h1>Comments:</h1>
+<br>
+
+<% @comment.each do |comment|%>
+<tr>
+<td><%=link_to comment.user_name,users_myinfo_path(user_name: comment.user_name)%> &nbsp; :</td>
+<br>
+<td><%=comment.body%></td>
+<br>
+<td><%=comment.updated_at%><td>
+<br>
+<%if session[:name]==comment.user_name%>
+<td><%=link_to 'Delete',comment_path(comment),method: :delete, data: { confirm: 'Are you sure?' }%></td>
+	<%end%>
+</tr>
+<br>
+<br>
+<% end %>
+<%if session[:name] && session[:password]%>
+<h2><%= link_to 'New comment!',new_comment_path(@article) %></h2>
+  <%end%>
+<br>
+<h2><%= link_to 'Back to home page!',users_index_path %></h2>

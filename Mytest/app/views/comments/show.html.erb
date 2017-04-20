@@ -1,0 +1,9 @@
+<h1>Comment : <%= @comment.body %></h1>
+
+
+<h4>Author : <%= link_to @comment.user_name , users_myinfo_path(user_name: @comment.user_name) %>  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Article_title: <%=@comment.article_title%> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Article_id: <%=@comment.article_id%></h4>
+
+
+
+<br>
+<h2><%= link_to 'Back to home page!',users_index_path %></h2>

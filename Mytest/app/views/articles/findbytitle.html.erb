@@ -1,0 +1,10 @@
+<h1>Input article title!</h1>
+<%= form_for :article ,url: articles_findtitle_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<%end%>

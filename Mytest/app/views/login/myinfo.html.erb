@@ -1,0 +1,21 @@
+<h1>My Account</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Create time</th>
+  </tr>
+
+  <% if @myself %>
+  <tr>
+    <td><%= @myself.name %></td>
+    <td><%= @myself.created_at%></td>
+  </tr>
+  <br>
+  <% else %>
+  <h2>You don not login!</h2>
+  <% end %>
+
+</table>
+<h2><%= link_to 'Change my password!' ,edit_user_path(@myself) %></h2>
+<h2><%= link_to 'Back to home page!'  ,users_index_path %></h2>

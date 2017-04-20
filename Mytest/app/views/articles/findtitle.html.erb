@@ -1,0 +1,24 @@
+<h2>All articles you find is here!</h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>abstract</th>
+    <th>Author</th>
+    <th>Read_count</th>
+    <th>Comments</th>
+    <th>Details</th>
+  </tr>
+
+  <% @article.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.abstract %></td> 
+    <td><%= link_to article.user_name , users_myinfo_path(user_name: article.user_name)%></td>   
+    <td><%= article.read_count %></td>
+    <td><%= article.comments_num %></td>
+    <td><%= link_to 'View',article_path(article)%></td>
+  </tr>
+  <% end %>
+</table>
+<br>
+<h2><%= link_to 'Back to home page!',users_index_path %></h2>

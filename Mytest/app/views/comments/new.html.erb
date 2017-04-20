@@ -1,0 +1,24 @@
+<h1>Please write your new comment!</h1>
+
+<%= form_for :comment ,url: comments_create_path do |f| %>
+  <p>
+    <%= f.label :body%><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+           Errors! Please try again!     </h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2><%= link_to 'Back to home page!',users_index_path %></h2>
